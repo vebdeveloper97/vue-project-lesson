@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <template v-if="isVisible">
+            <h2>New Title 1</h2>
+            <p>Lorem ipsum dolor sit amet.1</p>
+        </template>
+        <template v-else>
+            <h2>New Title 2</h2>/template>
+            <p>Lorem ipsum dolor sit amet.2</p>
+        </template>
+
+        <button @click="isVisible = !isVisible">Show</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                type: 'A',
+                isVisible: true,
+            }
+        })
+    </script>
+</body>
+</html>

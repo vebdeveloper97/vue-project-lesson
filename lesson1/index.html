@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div class="hide" v-if="isVisible">
+        <h1>{{ title }} | {{ counter }}</h1>
+        <p>{{ text }}</p>
+        <p v-html="link"></p>
+        <a v-bind:href="url" v-on:click.prevent>YOUTUBE</a>
+        <hr>
+        <input type="text" v-on:keyup.space="changeTitle">
+        <button v-on:click="newAlert">CLICK</button>
+        <button v-on:click="addCounter">Counter</button>
+        <button v-on:click="addCounters(5,$event)">Counter 5</button>
+    </div>
+    <button v-on:click="isVisible = !isVisible">{{ isVisible ? 'Hide' : 'Show' }}</button>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    var app1 = new Vue({
+        el: '#app',
+        data: {
+            title: 'Hello Vue JS',
+            text: 'Lorem ipsum dolar',
+            link: '<a href="http://google.com">GOOGLE</a>',
+            url: 'http://youtube.com',
+            counter: 0,
+            isVisible: true
+        },
+        methods: {
+            newAlert: function(){
+                alert(this.title)
+            },
+            changeTitle: function(event){
+                this.title = event.target.value
+            },
+            addCounter: function(){
+                this.counter++
+            },
+            addCounters: function(num, event){
+                this.counter += num
+                if(this.counter <= 100){
+                    event.target.style.color = 'red'
+                }else{
+                    event.target.style.color = 'green'
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>
