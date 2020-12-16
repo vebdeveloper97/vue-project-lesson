@@ -1,18 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+      <h1>{{ carName }}</h1>
+      <app-car
+        :carName="carName"
+        :carYear="carYear"
+        @nameChanged="carName = $event"
+      ></app-car>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Car from "./components/Car";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    appCar: Car
+  },
+  data() {
+    return {
+      carName: 'Ford',
+      carYear: 2019
+    }
+  },
 }
 </script>
 
