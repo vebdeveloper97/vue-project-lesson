@@ -5,12 +5,13 @@
         :carName="carName"
         :carYear="carYear"
         @nameChanged="carName = $event"
+        @updateCounter="counter=$event"
       ></app-car>
   </div>
 </template>
 
 <script>
-
+import {EventEmitter} from './main'
 import Car from "./components/Car";
 
 export default {
@@ -21,9 +22,15 @@ export default {
   data() {
     return {
       carName: 'Ford',
-      carYear: 2019
+      carYear: 2019,
+      counter: 0
     }
   },
+  methods: {
+    counterUpdate(){
+      EventEmitter.$emit('counterUpdate', 3)
+    }
+  }
 }
 </script>
 
